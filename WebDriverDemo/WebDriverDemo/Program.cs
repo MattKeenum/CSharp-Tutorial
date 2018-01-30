@@ -12,10 +12,11 @@ namespace WebDriverDemo
     {
         static void Main(string[] args)
         {
+            // Uncomment the next line to use a local ChromeDriver
             //IWebDriver driver = new ChromeDriver(@"C:\Users\mattk\webdrivers\");
-            FirefoxOptions ffo = new FirefoxOptions();
 
             // Using Selenium Standalone Server v3.8.1
+            FirefoxOptions ffo = new FirefoxOptions();
             Uri uri = new Uri("http://localhost:4444/wd/hub");
             RemoteWebDriver driver = new RemoteWebDriver(uri, ffo.ToCapabilities());
 
@@ -25,9 +26,13 @@ namespace WebDriverDemo
             searchBox.SendKeys("Pluralsight");
             searchBox.Submit();
 
-
-            //findByClassNameImplicitWait(driver);
-            findByClassNameExplicitWait(driver);
+            /* 
+             * Different ways to find elements
+             * Uncomment the method you want to use
+             * Comment out the methods you do not wish to use
+             */
+            findByClassNameImplicitWait(driver);
+            //findByClassNameExplicitWait(driver);
             //findByXPath(driver);
             //findByCssSelector(driver);
 
@@ -42,8 +47,10 @@ namespace WebDriverDemo
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-            /*  This specific example is finding a compound class name ("q qs"), which Selenium doesn't support
-                To get around this, we are only searching on the last class ("qs") and then filtering the results */
+            /*  
+             * This specific example is finding a compound class name ("q qs"), which Selenium doesn't support
+             * To get around this, we are only searching on the last class ("qs") and then filtering the results 
+             */
             var links = driver.FindElements(By.ClassName("qs"));
             foreach (var link in links)
             {
