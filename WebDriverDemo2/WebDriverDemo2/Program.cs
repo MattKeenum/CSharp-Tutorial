@@ -12,14 +12,11 @@ namespace WebDriverDemo2
             IWebDriver driver = new ChromeDriver(@"C:\Users\Mattk\webdrivers\");
             driver.Url = @"file:///C:/Users/mattk/source/repos/WebDriverDemo2/WebDriverDemo2/TestPage.html";
 
-            //CheckRadioButtons(driver);
-            //CheckCheckBoxes(driver);
-            //CheckSelectLists(driver);
-            //FindNestedTablesWithTagName(driver);
-            //FindNestedTablesWithXPath(driver);
-
-
-
+            CheckRadioButtons(driver);
+            CheckCheckBoxes(driver);
+            CheckSelectLists(driver);
+            FindNestedTablesWithTagName(driver);
+            FindNestedTablesWithXPath(driver);
 
         }
 
